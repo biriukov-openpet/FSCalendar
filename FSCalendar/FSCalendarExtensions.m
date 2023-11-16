@@ -154,6 +154,14 @@
     return [self dateFromComponents:components];
 }
 
+- (nullable NSDate *)fs_secondDayOfMonth:(NSDate *)month
+{
+    if (!month) return nil;
+    NSDateComponents *components = [self components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:month];
+    components.day = 2;
+    return [self dateFromComponents:components];
+}
+
 - (nullable NSDate *)fs_lastDayOfMonth:(NSDate *)month
 {
     if (!month) return nil;

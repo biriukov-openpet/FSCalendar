@@ -117,7 +117,7 @@
     NSInteger section = 0;
     switch (scope) {
         case FSCalendarScopeMonth: {
-            section = [self.gregorian components:NSCalendarUnitMonth fromDate:[self.gregorian fs_firstDayOfMonth:self.minimumDate] toDate:[self.gregorian fs_firstDayOfMonth:date] options:0].month;
+            section = [self.gregorian components:NSCalendarUnitMonth fromDate:[self.gregorian fs_firstDayOfMonth:self.minimumDate] toDate:[self.gregorian fs_secondDayOfMonth:date] options:0].month;
             if (position == FSCalendarMonthPositionPrevious) {
                 section++;
             } else if (position == FSCalendarMonthPositionNext) {
