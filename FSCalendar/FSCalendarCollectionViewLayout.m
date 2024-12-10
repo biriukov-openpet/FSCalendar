@@ -118,11 +118,15 @@
     self.estimatedItemSize = ({
         CGFloat width = (self.collectionView.fs_width-self.calendar.sectionInsets.left-self.calendar.sectionInsets.right)/7.0;
         CGFloat height = ({
-            CGFloat height = self.calendar.rowHeightForPagingEnabled * MAX(1, FSCalendarDeviceIsIPad*1.5);
+            CGFloat height = FSCalendarStandardRowHeight;
             if (!self.calendar.floatingMode) {
                 switch (self.calendar.transitionCoordinator.representingScope) {
                     case FSCalendarScopeMonth: {
-                        height = (self.collectionView.fs_height-self.calendar.sectionInsets.top-self.calendar.sectionInsets.bottom)/6.0;
+                        if (self.calendar.rowHeightForPagingEnabled > CGFLOAT_EPSILON) {
+                            height = self.calendar.rowHeightForPagingEnabled;
+                        } else {
+                            height = (self.collectionView.fs_height-self.calendar.sectionInsets.top-self.calendar.sectionInsets.bottom)/6.0;
+                        }
                         break;
                     }
                     case FSCalendarScopeWeek: {
