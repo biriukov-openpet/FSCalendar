@@ -65,7 +65,7 @@
         self.sectionRowCounts = NULL;
         
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        self.sectionInsets = UIEdgeInsetsMake(5, 0, 5, 0);
+        self.sectionInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         
         self.itemAttributes = NSMutableDictionary.dictionary;
         self.headerAttributes = NSMutableDictionary.dictionary;
@@ -116,17 +116,17 @@
         headerSize;
     });
     self.estimatedItemSize = ({
-        CGFloat width = (self.collectionView.fs_width-self.sectionInsets.left-self.sectionInsets.right)/7.0;
+        CGFloat width = (self.collectionView.fs_width-self.calendar.sectionInsets.left-self.calendar.sectionInsets.right)/7.0;
         CGFloat height = ({
-            CGFloat height = FSCalendarStandardRowHeight;
+            CGFloat height = self.calendar.rowHeightForPagingEnabled * MAX(1, FSCalendarDeviceIsIPad*1.5);
             if (!self.calendar.floatingMode) {
                 switch (self.calendar.transitionCoordinator.representingScope) {
                     case FSCalendarScopeMonth: {
-                        height = (self.collectionView.fs_height-self.sectionInsets.top-self.sectionInsets.bottom)/6.0;
+                        height = (self.collectionView.fs_height-self.calendar.sectionInsets.top-self.calendar.sectionInsets.bottom)/6.0;
                         break;
                     }
                     case FSCalendarScopeWeek: {
-                        height = (self.collectionView.fs_height-self.sectionInsets.top-self.sectionInsets.bottom);
+                        height = (self.collectionView.fs_height-self.calendar.sectionInsets.top-self.calendar.sectionInsets.bottom);
                         break;
                     }
                     default:

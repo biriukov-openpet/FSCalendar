@@ -382,6 +382,11 @@ IB_DESIGNABLE
  */
 @property (assign, nonatomic) IBInspectable CGFloat rowHeight;
 
+@property (assign, nonatomic) CGFloat rowHeightForPagingEnabled;
+@property (assign, nonatomic) UIEdgeInsets sectionInsets;
+@property (assign, nonatomic) CGFloat padding;
+@property (nonatomic, copy, nullable) NSString* (^weekDayNameModifier)(NSString*);
+
 /**
  The calendar appearance used to control the global fonts、colors .etc
  */

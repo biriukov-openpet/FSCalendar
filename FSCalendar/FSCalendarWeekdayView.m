@@ -107,7 +107,12 @@
         UILabel *label = [self.weekdayPointers pointerAtIndex:i];
         label.font = self.calendar.appearance.weekdayFont;
         label.textColor = self.calendar.appearance.weekdayTextColor;
-        label.text = useDefaultWeekdayCase ? weekdaySymbols[index] : [weekdaySymbols[index] uppercaseString];
+        
+        NSString* weekDayName = useDefaultWeekdayCase ? weekdaySymbols[index] : [weekdaySymbols[index] uppercaseString];
+        if (self.calendar.weekDayNameModifier) {
+            weekDayName = self.calendar.weekDayNameModifier(weekDayName);
+        }
+        label.text = weekDayName;
     }
 
 }
