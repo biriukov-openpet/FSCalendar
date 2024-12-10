@@ -749,7 +749,20 @@ typedef NS_ENUM(NSUInteger, FSCalendarOrientation) {
         [NSException raise:FSCalendarInvalidArgumentsExceptionName format:@"Do not use %@ as the cell reuse identifier.", identifier];
     }
     [self.collectionView registerClass:cellClass forCellWithReuseIdentifier:identifier];
+}
 
+- (void)registerNib:(UINib *)nib withCellClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier
+{
+    if (!identifier.length) {
+        [NSException raise:FSCalendarInvalidArgumentsExceptionName format:@"This identifier must not be nil and must not be an empty string."];
+    }
+    if (![cellClass isSubclassOfClass:[FSCalendarCell class]]) {
+        [NSException raise:@"The cell class must be a subclass of FSCalendarCell." format:@""];
+    }
+    if ([identifier isEqualToString:FSCalendarBlankCellReuseIdentifier]) {
+        [NSException raise:FSCalendarInvalidArgumentsExceptionName format:@"Do not use %@ as the cell reuse identifier.", identifier];
+    }
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
 }
 
 - (FSCalendarCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)position;
