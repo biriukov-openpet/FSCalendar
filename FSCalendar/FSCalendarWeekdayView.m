@@ -109,8 +109,8 @@
         label.textColor = self.calendar.appearance.weekdayTextColor;
         
         NSString* weekDayName;
-        if (self.calendar.weekDayNameProvider) {
-            weekDayName = self.calendar.weekDayNameProvider(index);
+        if (self.calendar.appearance.weekDayNameProvider) {
+            weekDayName = self.calendar.appearance.weekDayNameProvider(index);
         } else {
             weekDayName = useDefaultWeekdayCase ? weekdaySymbols[index] : [weekdaySymbols[index] uppercaseString];
         }
