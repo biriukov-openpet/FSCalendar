@@ -217,6 +217,11 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (assign, nonatomic) FSCalendarCaseOptions caseOptions;
 
 /**
+ * Gives oportunity to provide your own text for week day.
+ */
+@property (nonatomic, copy, nullable) NSString* (^weekDayNameProvider)(NSUInteger);
+
+/**
  * The line integrations for calendar.
  *
  */

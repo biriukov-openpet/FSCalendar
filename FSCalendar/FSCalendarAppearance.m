@@ -452,6 +452,12 @@
     }
 }
 
+- (void)setWeekDayNameProvider:(NSString *(^)(NSUInteger))weekDayNameProvider
+{
+    _weekDayNameProvider = weekDayNameProvider;
+    [self.calendar configureAppearance];
+}
+
 - (void)setSeparators:(FSCalendarSeparators)separators
 {
     if (_separators != separators) {
